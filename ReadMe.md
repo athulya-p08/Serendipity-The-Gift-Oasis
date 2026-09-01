@@ -161,3 +161,8 @@ Serendipity-The-Gift-Oasis/
 ### Project Collaborators ->
 1.) Athulya Pradeepkumar --- https://github.com/athulya-p08  <br>
 2.) Siddhi Sasidharan ------- https://github.com/
+
+📄 Disclaimer
+This project was developed for educational and academic purposes.
+The website is currently designed as an e-commerce project prototype and runs locally using XAMPP.
+Some advanced production-level features such as a complete payment gateway, order tracking, and admin dashboard can be implemented as future enhancements.
