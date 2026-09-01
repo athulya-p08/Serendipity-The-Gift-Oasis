@@ -1,20 +1,152 @@
-## E-commerce Website
-A complete e-commerce website with HTML, CSS and JAVASCRIPT ,also using PHP and MYSQLi during the process to maintain a database...!!!
+# 🎁 Serendipity – The Gift Oasis
+Serendipity – The Gift Oasis is a complete e-commerce gift shopping website developed to provide users with an easy and enjoyable online gift-shopping experience.
+The website allows users to browse different gift categories, view product details, search for products, add products to the cart and wishlist, select quantities, add gift messages, choose gift wrapping, and proceed to checkout.
+---
 
-### Features of this Ecommerce Website
+# 📌 Project Overview
+**Project Name:** Serendipity – The Gift Oasis
+**Type:** E-Commerce Gift Shopping Website
 
-- Responsive Navigation Bar with toggle effect
-- Responsive Carousel with Glidejs
-- Categories Section
-- New Arrival Products Section
-- Contact Section
-- Footer
-- Responsive PopUp
-- Product Page with Pagination and Sorting
-- Product Details Page with Image Zoom Effect
-- Cart Page
-- Responsive Login Page
-- Responsive SignUp Page
+**Frontend Technologies:**
+- HTML
+- CSS
+- JavaScript
+
+**Backend Technologies:**
+- PHP
+
+**Database:**
+- MySQL / MySQLi
+
+**Development Environment:**
+- Visual Studio Code
+
+**Local Server:**
+- XAMPP
+---
+
+# ✨ Features
+- Responsive Navigation Bar
+- User Login and Logout
+- User Registration
+- Different Gift Categories
+- Product Details Pages
+- Product Image Zoom Effect
+- Product Search Functionality
+- Wishlist Functionality
+- Shopping Cart
+- Quantity Selection
+- Gift Message Option
+- Gift Wrapping Option
+- Remove Items from Cart
+- Remove Items from Wishlist
+- Automatic Cart Total Calculation
+- Checkout Order Summary
+- Product Categories
+- Related Products Section
+- Responsive Website Design
+- Database Connectivity using PHP and MySQL
+- User Session Management
+- Banner Slider
+- Expandable Categories Section
+---
+
+# 🛍️ Gift Categories
+The website contains multiple gift categories including:
+- 🎂 Birthday Gifts
+- 💍 Wedding Gifts
+- 🧸 Gifts for Children
+- 🧴 Self Care Gifts
+- 👩 Gifts for Her
+- 👨 Gifts for Him
+- 💎 Luxury Gifts
+- 🎁 Gift Hampers
+- 🏠 Home Decor
+- 🎉 Festival Gifts
+---
+
+# 🖼️ Website Screenshots
+## 🏠 Home Page
+![Home Page](screenshots/home.png)
+---
+
+## 🏠 Login/Register Page
+![Login Page](screenshots/login.png)
+---
+
+## 🛍️ Categories Page
+![Categories Page](screenshots/categories.png)
+---
+
+## 🎁 Product Details Page
+![Product Details](screenshots/product.png)
+---
+
+## ❤️ Wishlist Page
+![Wishlist](screenshots/wishlist.png)
+---
+
+## 🛒 Shopping Cart
+![Shopping Cart](screenshots/cart.png)
+---
+
+## 🔍 Search Page
+![Search Page](screenshots/search.png)
+---
+
+## 🏠 About US Page
+![About Page](screenshots/about_us.png)
+---
+
+## 🏠 Terms and Conditions Page
+![Terms Page](screenshots/terms_conditions.png)
+---
+
+# 🛠️ Technologies Used
+| Technology | Purpose |
+|---|---|
+| HTML | Structure of the website |
+| CSS | Styling and layout |
+| JavaScript | Client-side functionality |
+| PHP | Backend functionality |
+| MySQL | Database management |
+| XAMPP | Local server environment |
+| Visual Studio Code | Code editor and development environment |
+---
+
+# 📂 Project Structure
+
+Serendipity-The-Gift-Oasis/
+│
+├── css/
+│   └── styles.css
+│
+├── js/
+│   ├── index.js
+│   └── zoomsl.min.js
+│
+├── images/
+│   └── Product and website images
+│
+├── screenshots/
+│   ├── home.png
+│   ├── categories.png
+│   ├── product.png
+│   ├── wishlist.png
+│   ├── cart.png
+│   └── search.png
+│
+├── index.php
+├── categories.php
+├── cart.php
+├── wishlist.php
+├── profile.php
+├── login.php
+├── logout.php
+├── config.php
+├── db_connect.php
+│
+└── README.md
 
 ### Steps to follow 
 1.) Download XAMPP Control panel on your system. Link -- https://www.apachefriends.org/ <br>
@@ -27,5 +159,5 @@ A complete e-commerce website with HTML, CSS and JAVASCRIPT ,also using PHP and 
 8.) After all these setup, hit url "localhost/ecommerce" on a new tab in your browser to see the project running. <br>
 
 ### Project Collaborators ->
-1.) Tanisha Bhadani --- https://github.com/tanisha-bhadani  <br>
-2.) Rahul Verma ------- https://github.com/inexorable23
+1.) Athulya Pradeepkumar --- https://github.com/athulya-p08  <br>
+2.) Siddhi Sasidharan ------- https://github.com/
