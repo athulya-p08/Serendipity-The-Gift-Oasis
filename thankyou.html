@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You | Serendipity</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #e6ccff, #c299ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      color: #4b0082;
+    }
+    
+    .thank-you-container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #5a0080;
+    }
+
+    p {
+      font-size: 18px;
+      color: #6a006a;
+    }
+
+    .loader {
+      border: 5px solid #e0c3fc;
+      border-top: 5px solid #5a0080;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+
+  <script>
+    // Set form submission flag in localStorage
+    localStorage.setItem("formSubmitted", "true");
+
+    // Redirect to orders page after 3 seconds
+    setTimeout(() => {
+      window.location.href = "orders.php";
+    }, 3000);
+  </script>
+</head>
+<body>
+  <div class="thank-you-container">
+    <h2>Thank You for Your Order!</h2>
+    <p>Your order is being processed. You will be redirected to your orders summary shortly.</p>
+    <div class="loader"></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<htm lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="login.css">
+        <title>Register</title>
+        <style>
+            body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: #e4bcea;
+}
+
+.box {
+    background: #ce91e6;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(16, 0, 19, 0.46);
+    width: 100%;
+    max-width: 400px;
+}
+
+header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #9b42c1;
+    box-shadow: 0 0 3px rgba(215, 146, 245, 0.5);
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    background: #8f17d0;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #8818a3;
+}
+
+.links {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.links a {
+    color: #6b23f1;
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+        </style>
+    </head>
+    <body>
+            <div class="box form-box">
+                <header>Sign Up</header>
+                <form id="registerForm" action="register.php" method="post" onsubmit="return validateForm()">
+                    <div class="field input">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" autocomplete="off" required>
+                    </div>
+
+                    <div class="field input">
+                        <label for="email">E-mail</label>
+                        <input type="text" name="email" id="email" autocomplete="off" required>
+                    </div>
+
+                    <div class="field input">
+                        <label for="age">Age</label>
+                        <input type="number" name="age" id="age" autocomplete="off" required min="1">
+                    </div>
+
+                    <div class="field input">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" autocomplete="off" required>
+                        <button type="button" onclick="togglePassword('password')">Show</button>
+                    </div>
+
+                    <div id="passwordStrength" style="font-size: 12px; margin-top: 5px;"></div>
+
+                    <div id="errorContainer" style="display: none; color: red; margin-bottom: 10px;"></div>
+
+
+                    <div class="field input">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" name="confirm_password" id="confirm_password" autocomplete="off" required>
+                        <button type="button" onclick="togglePassword('confirm_password')">Show</button>
+                    </div>
+                    
+
+                    <div class="field">
+                        <input type="submit" class="btn" name="submit" value="Register" required>
+                    </div>
+
+                    <div class="links">
+                        Already a user? <a href="login.html">Sign In</a>
+                    </div>
+                </form>
+        </div>
+
+        <script>
+            // JavaScript validation for form
+            function validateForm() {
+                const username = document.getElementById("username").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const age = document.getElementById("age").value.trim();
+                const password = document.getElementById("password").value.trim();
+                const confirmPassword = document.getElementById("confirm_password").value.trim();
+    
+                // Ensure all fields are filled
+                if (!username || !email || !age || !password || !confirmPassword) {
+                    alert("All fields are required. Please fill out the form completely.");
+                    return false;
+                }
+    
+                // Ensure password and confirm password match
+                if (password !== confirmPassword) {
+                    alert("Passwords do not match. Please try again.");
+                    return false;
+                }
+    
+                // Form is valid
+                return true;
+            }
+        </script>
+        <script>
+            // Flags to track whether alerts have already been shown
+let usernameAlertShown = false;
+let emailAlertShown = false;
+
+// Username input validation
+document.getElementById("username").addEventListener("input", function () {
+    const username = this.value.trim();
+    if (username.length < 3 && !usernameAlertShown) {
+        alert("Username must be at least 3 characters long.");
+        usernameAlertShown = true;  // Alert shown, prevent further alerts
+        this.style.borderColor = "red";
+    } else if (username.length >= 3) {
+        this.style.borderColor = ""; // Reset border when valid
+        usernameAlertShown = false; // Allow alert to be shown again if invalidated
+    }
+});
+
+// Email input validation
+document.getElementById("email").addEventListener("input", function () {
+    const email = this.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email) && !emailAlertShown) {
+        alert("Please enter a valid email address.");
+        emailAlertShown = true;  // Alert shown, prevent further alerts
+        this.style.borderColor = "red";
+    } else if (emailRegex.test(email)) {
+        this.style.borderColor = ""; // Reset border when valid
+        emailAlertShown = false; // Allow alert to be shown again if invalidated
+    }
+});
+
+document.getElementById("password").addEventListener("input", function () {
+    const password = this.value;
+    const strengthIndicator = document.getElementById("passwordStrength");
+    if (password.length < 6) {
+        strengthIndicator.textContent = "Weak (minimum 6 characters)";
+        strengthIndicator.style.color = "red";
+    } else if (password.length < 10) {
+        strengthIndicator.textContent = "Medium";
+        strengthIndicator.style.color = "orange";
+    } else {
+        strengthIndicator.textContent = "Strong";
+        strengthIndicator.style.color = "green";
+    }
+});
+
+        </script>
+        <script>
+            function togglePassword(fieldId) {
+    const passwordField = document.getElementById(fieldId);
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+    } else {
+        passwordField.type = "password";
+    }
+}
+
+        </script>
+        <script>
+            function displayError(message) {
+    const errorContainer = document.getElementById("errorContainer");
+    errorContainer.textContent = message;
+    errorContainer.style.display = "block";
+}
+
+function hideError() {
+    const errorContainer = document.getElementById("errorContainer");
+    errorContainer.style.display = "none";
+}
+
+function validateForm() {
+    const username = document.getElementById("username").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const age = document.getElementById("age").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const confirmPassword = document.getElementById("confirm_password").value.trim();
+
+    if (!username || !email || !age || !password || !confirmPassword) {
+        displayError("All fields are required. Please fill out the form completely.");
+        return false;
+    }
+
+    if (password !== confirmPassword) {
+        displayError("Passwords do not match. Please try again.");
+        return false;
+    }
+
+    hideError();
+    return true;
+}
+
+        </script>
+    </body>
+</html>

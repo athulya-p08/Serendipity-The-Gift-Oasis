@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Here</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+      background-color: #f5c6f7;
+    }
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px;
+    }
+
+    .search {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #11010e;
+      border-radius: 4px;
+    }
+
+    .submit {
+      background-color: #4f0561;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .submit:hover {
+      background-color: #a31fe0;
+    }
+
+    .results {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .result-item {
+      border: 1px solid #050005;
+      border-radius: 8px;
+      width: 200px;
+      margin: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .result-item img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .result-item h3 {
+      font-size: 18px;
+      color: #333;
+      margin: 10px 0;
+    }
+
+    .result-item a {
+      text-decoration: none;
+      color: #1c0627;
+      font-weight: bold;
+    }
+
+    .result-item a:hover {
+      color: #460663;
+    }
+
+    .banner {
+  width: 100%;
+  max-height: 500px;  /* Adjust height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover; /* Change to 'contain' if cropping persists */
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+
+    .banner-slide {
+      display: none;
+    }
+
+    .banner-slide.active {
+      display: block;
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+
+    /* Categories Section */
+    .categories-container {
+      margin: 30px auto;
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .category-item {
+      width: 200px;
+      margin: 10px;
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      text-decoration: none;
+      color: #4f0561;
+      font-weight: bold;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .category-item:hover {
+      background-color: #4f0561;  /* New background color on hover */
+      color: #ffffff;             /* New text color on hover */
+    }
+
+    .expand-arrow {
+      margin-top: 20px;
+      cursor: pointer;
+      font-size: 20px;
+      color: #4f0561;
+    }
+
+    .hidden-categories {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Search Here</h1>
+
+<div class="search-container">
+  <form id="searchForm">
+    <input type="text" id="searchInput" class="search" placeholder="Search here!" required>
+    <button type="submit" class="submit">Search</button>
+  </form>
+</div>
+
+<div id="searchResults" class="results">
+  <!-- Search results with images and names will be displayed here -->
+</div>
+
+<!-- Banner Section -->
+<div class="banner">
+  <div class="banner-slide active"><a href="bday_mug.php">
+    <img src="./images/mug.jpeg" alt="White Birthday Themed Mug">
+  </a>
+  </div>
+  <div class="banner-slide"><a href="hamper_bday.php">
+    <img src="./images/bday hamper.jpeg" alt="Birthday Hamper">
+  </a></div>
+  <div class="banner-slide"><a href="soft_toys.php">
+    <img src="./images/teddy.jpeg" alt="Adorable Teddy">
+  </a></div>
+
+  <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+  <button class="next" onclick="changeSlide(1)">&#10095;</button>
+</div>
+
+
+<!-- Categories Section -->
+<div class="categories-container">
+  <h2>Explore Categories</h2>
+  <div class="categories">
+    <a href="bday.php" class="category-item">Birthday Gifts</a>
+    <a href="wedding.php" class="category-item">Wedding Gifts</a>
+    <a href="children.php" class="category-item">Gifts for Children</a>
+  </div>
+
+  <div id="extraCategories" class="hidden-categories">
+    <div class="categories">
+      <a href="selfcare.php" class="category-item">Self Care Gifts</a>
+      <a href="for him_her.php" class="category-item">For-Him/For-Her Gifts</a>
+      <a href="luxury.php" class="category-item">Luxury Gifts</a>
+      <a href="hamper.php" class="category-item">Gift Hampers</a>
+      <a href="decor.php" class="category-item">Decor Gifts</a>
+      <a href="festival.php" class="category-item">Festival Gifts</a>
+    </div>
+  </div>
+
+  <div class="expand-arrow" onclick="toggleCategories()">&#9660; Show More</div>
+</div>
+
+
+<script>
+  // Data with product names, images, and their respective links
+  const data = [
+    { name: "White Birthday Themed Mug",image: "./images/mug.jpeg", link: "bday_mug.php" },
+    { name: "Aesthetic Birthday Frame",image: "./images/frame.jpeg", link: "bday_frame.php" },
+    { name: "KitKat Choco Hamper for Birthday",image: "./images/choco hamp.jpeg", link: "bday_kitkat.php" },
+    { name: "White-Golden Birthday Banner",image: "./images/bday banner.jpeg", link: "bday_banner.php" },
+    { name: "White Pillow with Birthday Print",image: "./images/bday pillow.jpeg", link: "bday_pillow.php" },
+    { name: "Aesthetic Birthday Frame",image: "./images/bday greetcard.jpeg", link: "bday_greetcard.php" },
+
+    { name: "Wedding anniversary Gold Plated Rings",image: "./images/Rings.jpeg", link: "wed_ring.php" },
+    { name: "Wedding anniversary Black-Gold Combo Gift Set",image: "./images/couple gift.jpeg", link: "wed_watch.php" },
+    { name: "Wedding anniversary Black-White Bottle Set",image: "./images/bottle.jpeg", link: "couple_bottle.php" },
+    { name: "White Wedding anniversary Frame",image: "./images/wed frame.jpeg", link: "wed_frame.php" },
+    { name: "Wedding anniversary Cute mini showpiece",image: "./images/wed showpiece.jpeg", link: "wed_showpiece.php" },
+    { name: "Wedding anniversary Crystal Couple Pendant",image: "./images/couple pendant.jpeg", link: "wed_pendant.php" },
+
+    { name: "Adorable Teddy / Children's Toys",image: "./images/Teddy.jpeg", link: "soft_toys.php" },
+    { name: "Pink Barbie Doll / Children's Toys",image: "./images/barbie doll.jpeg", link: "barbie_doll.php" },
+    { name: "Multicolor Kitchen Set / Children's Toys",image: "./images/kitchen set.jpeg", link: "kitchen_set.php" },
+    { name: "Hotwheels 50 Car Gift Set / Children's Toys",image: "./images/hot wheel's.jpeg", link: "hotwheels.php" },
+    { name: "Inside Out Themed Puzzle / Children's Toys",image: "./images/mini puzzle.jpeg", link: "puzzle.php" },
+    { name: "Wooden Fishing Set / Children's Toys",image: "./images/fishing set.jpeg", link: "playset.php" },
+
+    { name: "Soft Comfy Slippers / Selfcare",image: "./images/Slipper.jpeg", link: "slippers.php" },
+    { name: "200 Page Diary / Selfcare",image: "./images/diary.jpeg", link: "diary.php" },
+    { name: "Self Help Books - Set of 6 / Selfcare",image: "./images/self help books.jpeg", link: "selfhelp_books.php" },
+    { name: "Glass Tumbler with Straw / Selfcare",image: "./images/tumbler.jpeg", link: "tumbler.php" },
+    { name: "Set of Self Care Mask & Neck Pillow / Selfcare",image: "./images/sleeping mask.jpeg", link: "selfcare_mask.php" },
+    { name: "Unisex Skin Care Set / Selfcare",image: "./images/self care set.jpeg", link: "care_product.php" },
+
+    { name: "White Handbag with Golden Chain For Her",image: "./images/white_bag.jpeg", link: "handbag.php" },
+    { name: "Accsessories Set For Her",image: "./images/accessories.jpeg", link: "accessories.php" },
+    { name: "Black-Silver Pencil Heels For Her",image: "./images/heels.jpeg", link: "heels.php" },
+    { name: "Royal Color Tie Set For Him",image: "./images/tie.jpeg", link: "tie.php" },
+    { name: "Black Leather Bag For Him",image: "./images/duffle bag.jpeg", link: "duffle_bag.php" },
+    { name: "Black Leather Wallet For Him",image: "./images/wallet.jpeg", link: "wallet.php" },
+
+    { name: "Orchid Leather Perfume / Luxury Gifts" ,image: "./images/lux perfume.jpeg", link: "perfume.php" },
+    { name: "Cocktail Kit / Luxury Gifts",image: "./images/cocktail kit.jpeg", link: "cocktailset.php" },
+    { name: "Lavender Crystalized Candle / Luxury Gifts",image: "./images/lux_candle.jpeg", link: "candle.php" },
+    { name: "Red-White Diamond Jewel Set / Luxury Gifts",image: "./images/jewel set.jpeg", link: "jewel_set.php" },
+    { name: "Exotic Champagne / Luxury Gifts",image: "./images/Champagne.jpeg", link: "champagne.php" },
+    { name: "Couple's Watch / Luxury Gifts",image: "./images/Watch.jpeg", link: "lux_watch.php" },
+
+    { name: "Birthday Hamper / Gift Hampers",image: "./images/bday hamper.jpeg", link: "hamper_bday.php" },
+    { name: "Ferrero Rocher Chocolate Hamper / Gift Hampers",image: "./images/chocolate set.jpeg", link: "hamper_choco.php" },
+    { name: "Hamper For Him/Men's Hamper / Gift Hampers",image: "./images/men's hamper.jpeg", link: "hamper_men.php" },
+    { name: "Hamper For Her/Women's Hamper / Gift Hampers",image: "./images/women's hamper.jpeg", link: "hamper_women.php" },
+    { name: "Johnson's Baby Hamper / Gift Hampers",image: "./images/baby hamper.jpeg", link: "hamper_baby.php" },
+    { name: "Hula Delights Dry Fruit Platter/Dryfruit Hamper / Gift Hampers",image: "./images/dryfruit hamper.jpeg", link: "hamper_dryfruit.php" },
+
+    { name: "Golden Ganesh Idol Showpiece Decor / Home Decor",image: "./images/ganesha.jpeg", link: "showpiece.php" },
+    { name: "Organizer Table / Home Decor",image: "./images/table.jpeg", link: "organizer.php" },
+    { name: "Key Shaped Key Holder/Keyholder / Home Decor",image: "./images/keyholder.jpeg", link: "keyholder.php" },
+    { name: "Happy Face Plant Holder/Plantholder / Home Decor",image: "./images/plantholder.jpeg", link: "plantholder.php" },
+    { name: "Multi-set Wall Frame/Wallframe / Home Decor",image: "./images/wallframe.jpeg", link: "wallframe.php" },
+    { name: "Flower Shaped Lamp / Home Decor",image: "./images/Lamp.jpeg", link: "lamp.php" },
+
+    { name: "Diya (Lotus)/Diwali / Festival Gifts",image: "./images/diya.jpeg", link: "diya.php" },
+    { name: "Seven Rangoli Colors/Holi Colors / Festival Gifts",image: "./images/holi colors.jpeg", link: "holi.php" },
+    { name: "Rakhi Combo/Rakshabandhan / Festival Gifts",image: "./images/rakhi.jpeg", link: "rakhi.php" },
+    { name: "Kathakali Frame/Onam / Festival Gifts",image: "./images/kathakali.jpeg", link: "onam.php" },
+    { name: "Diwali Sweets Box / Festival Gifts",image: "./images/sweets box.jpeg", link: "diwali.php" },
+    { name: "Christmas Cookie Hamper / Festival Gifts",image: "./images/christmas.jpeg", link: "christmas.php" }
+  ];
+
+  // Handle the search form submission
+  document.getElementById("searchForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent form from refreshing the page
+
+    const query = document.getElementById("searchInput").value.trim().toLowerCase();
+    const resultsDiv = document.getElementById("searchResults");
+    resultsDiv.innerHTML = ""; // Clear previous results
+
+    if (query === "") {
+      resultsDiv.innerHTML = "<p>Please enter a search term.</p>";
+      return;
+    }
+
+    // Filter data based on the query
+    const results = data.filter(item => item.name.toLowerCase().includes(query));
+
+    if (results.length > 0) {
+      results.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "result-item";
+
+        // Product image
+        const img = document.createElement("img");
+        img.src = item.image;
+        img.alt = item.name;
+
+        // Product name with link
+        const name = document.createElement("h3");
+        const link = document.createElement("a");
+        link.href = item.link;
+        link.textContent = item.name;
+        name.appendChild(link);
+
+        // Add image and name to result-item
+        div.appendChild(img);
+        div.appendChild(name);
+
+        resultsDiv.appendChild(div);
+      });
+    } else {
+      resultsDiv.innerHTML = "<p>No results found!</p>";
+    }
+  });
+</script>
+
+<script>
+  // Banner Slider Script
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.banner-slide');
+
+  function changeSlide(direction) {
+    slides[slideIndex].classList.remove('active');
+    slideIndex = (slideIndex + direction + slides.length) % slides.length;
+    slides[slideIndex].classList.add('active');
+  }
+
+  setInterval(() => changeSlide(1), 4000);
+
+  // Toggle categories
+  let isExpanded = false;
+  function toggleCategories() {
+    const extraCategories = document.getElementById("extraCategories");
+    const arrow = document.querySelector(".expand-arrow");
+    if (isExpanded) {
+      extraCategories.style.display = "none";
+      arrow.innerHTML = "&#9660; Show More";
+    } else {
+      extraCategories.style.display = "block";
+      arrow.innerHTML = "&#9650; Show Less";
+    }
+    isExpanded = !isExpanded;
+  }
+</script>
+
+
+</body>
+</html>
