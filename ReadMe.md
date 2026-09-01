@@ -67,7 +67,7 @@ The website contains multiple gift categories including:
 
 # 🖼️ Website Screenshots
 ## 🏠 Home Page
-![Home Page](screenshots/home.png)
+![Home Page](screenshots/homepage.png)
 ---
 
 ## 🏠 Login/Register Page
